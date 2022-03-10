@@ -1,0 +1,45 @@
+     Assembly listing for: Q4.mas
+                Assembled: Sat Aug 29 20:10:55 CDT 2020
+
+         |                    ORG 0                        
+000 5000 |                    INPUT                       / takes an input a 
+001 2012 |                    STORE A                     / stores it
+002 5000 |                    INPUT                       /takes an input b	
+003 2013 |                    STORE B                     /stores it
+004 0006 |                    JNS calMultiplication       / jumps all the way to subroutine
+005 7000 |                    HALT                        /end program
+         |                                                
+006 0000 |  calMultiplication HEX 000                     / used for storing and will need it when return address
+007 1015 |  LOOP              LOAD C                      / load c to AC
+008 3012 |                    ADD A                       / adds a to AC
+009 2015 |                    STORE C                     / store it
+00A 1013 |                    LOAD B                       
+00B 4014 |                    SUBT one                    /AC = AC -1
+00C 2013 |                    STORE B                      
+00D 8400 |                    SKIPCOND 400                /comapre AC = 0
+00E 9007 |                    JUMP LOOP                   / loops again
+00F 1015 |                    LOAD C                       
+010 6000 |                    OUTPUT                       
+011 7000 |                    HALT                         
+012 0000 |  A                 DEC 0                        
+013 0000 |  B                 DEC 0                        
+014 0001 |  one               DEC 1                        
+015 0000 |  C                 DEC 0                        
+016 C006 |                    JUMPI calMultiplication     / exit subR
+         |                                                		
+
+Assembly successful.
+
+         SYMBOL TABLE
+         -------------------------------------------------------------
+          Symbol            | Defined | References 
+         -------------------+---------+-------------------------------
+          A                 |   012   | 001, 008
+          B                 |   013   | 003, 00A, 00C
+          C                 |   015   | 007, 009, 00F
+          LOOP              |   007   | 00E
+          calMultiplication |   006   | 004, 016
+          one               |   014   | 00B
+         -------------------------------------------------------------
+
+

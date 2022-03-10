@@ -1,0 +1,26 @@
+	ORG	0
+	INPUT A  / takes an input a 
+	STORE A	/ stores it
+	INPUT B	/takes an input b	
+	STORE B	/stores it
+	JNS calMultiplication / jumps all the way to subroutine
+	HALT /end program
+
+calMultiplication, HEX 000  / used for storing and will need it when return address
+	LOOP, LOAD C / load c to AC
+		ADD A / adds a to AC
+		STORE C / store it
+		LOAD B
+		SUBT one /AC = AC -1
+		STORE B
+		SKIPCOND 400 /comapre AC = 0
+		JUMP LOOP / loops again
+	Load C
+	OUTPUT
+	HALT
+A,	dec 0
+B,	dec 0
+one,	dec 1
+C,	dec 0
+	JUMPI calMultiplication / exit subR
+		
